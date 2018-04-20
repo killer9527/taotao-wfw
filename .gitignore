@@ -1,3 +1,6 @@
 */.idea/
 */*/target/
 */target/
+generatorSqlmapCustom/src/com/wfw/
+generatorSqlmapCustom/lib/
+generatorSqlmapCustom/bin/
