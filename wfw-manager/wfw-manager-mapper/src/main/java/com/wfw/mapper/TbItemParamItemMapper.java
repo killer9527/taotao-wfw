@@ -1,19 +1,19 @@
 package com.wfw.mapper;
 
-import com.wfw.pojo.TbItemParamItem;
+import com.wfw.entity.TbItemParamItemDO;
 
 public interface TbItemParamItemMapper {
     int deleteByPrimaryKey(Long id);
 
-    int insert(TbItemParamItem record);
+    int insert(TbItemParamItemDO record);
 
-    int insertSelective(TbItemParamItem record);
+    int insertSelective(TbItemParamItemDO record);
 
-    TbItemParamItem selectByPrimaryKey(Long id);
+    TbItemParamItemDO selectByPrimaryKey(Long id);
 
-    int updateByPrimaryKeySelective(TbItemParamItem record);
+    int updateByPrimaryKeySelective(TbItemParamItemDO record);
 
-    int updateByPrimaryKeyWithBLOBs(TbItemParamItem record);
+    int updateByPrimaryKeyWithBLOBs(TbItemParamItemDO record);
 
-    int updateByPrimaryKey(TbItemParamItem record);
+    int updateByPrimaryKey(TbItemParamItemDO record);
 }

@@ -21,8 +21,8 @@
     </bean>
     <!-- 配置sqlSessionFactory 依赖于dataSource-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <!--数据库的配置文件-->
-        <property name="configLocation" value="classpath:properties/db.properties"></property>
+        <!--mybatis配置文件-->
+        <property name="configLocation" value="classpath:mybatis/sqlMapConfig.xml"></property>
         <!--数据库连接-->
         <property name="dataSource" ref="dataSource"></property>
     </bean>

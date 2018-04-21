@@ -1,17 +1,17 @@
 package com.wfw.mapper;
 
-import com.wfw.pojo.TbUser;
+import com.wfw.entity.TbUserDO;
 
 public interface TbUserMapper {
     int deleteByPrimaryKey(Long id);
 
-    int insert(TbUser record);
+    int insert(TbUserDO record);
 
-    int insertSelective(TbUser record);
+    int insertSelective(TbUserDO record);
 
-    TbUser selectByPrimaryKey(Long id);
+    TbUserDO selectByPrimaryKey(Long id);
 
-    int updateByPrimaryKeySelective(TbUser record);
+    int updateByPrimaryKeySelective(TbUserDO record);
 
-    int updateByPrimaryKey(TbUser record);
+    int updateByPrimaryKey(TbUserDO record);
 }

@@ -1,17 +1,17 @@
 package com.wfw.mapper;
 
-import com.wfw.pojo.TbItemCat;
+import com.wfw.entity.TbItemCatDO;
 
 public interface TbItemCatMapper {
     int deleteByPrimaryKey(Long id);
 
-    int insert(TbItemCat record);
+    int insert(TbItemCatDO record);
 
-    int insertSelective(TbItemCat record);
+    int insertSelective(TbItemCatDO record);
 
-    TbItemCat selectByPrimaryKey(Long id);
+    TbItemCatDO selectByPrimaryKey(Long id);
 
-    int updateByPrimaryKeySelective(TbItemCat record);
+    int updateByPrimaryKeySelective(TbItemCatDO record);
 
-    int updateByPrimaryKey(TbItemCat record);
+    int updateByPrimaryKey(TbItemCatDO record);
 }

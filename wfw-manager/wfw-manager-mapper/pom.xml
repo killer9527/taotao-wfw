@@ -15,7 +15,7 @@
     <dependencies>
         <dependency>
             <groupId>com.wfw</groupId>
-            <artifactId>wfw-manager-pojo</artifactId>
+            <artifactId>wfw-manager-entity</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <!-- Mybatis -->

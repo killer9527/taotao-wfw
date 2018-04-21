@@ -1,17 +1,17 @@
 package com.wfw.mapper;
 
-import com.wfw.pojo.TbOrder;
+import com.wfw.entity.TbOrderDO;
 
 public interface TbOrderMapper {
     int deleteByPrimaryKey(String orderId);
 
-    int insert(TbOrder record);
+    int insert(TbOrderDO record);
 
-    int insertSelective(TbOrder record);
+    int insertSelective(TbOrderDO record);
 
-    TbOrder selectByPrimaryKey(String orderId);
+    TbOrderDO selectByPrimaryKey(String orderId);
 
-    int updateByPrimaryKeySelective(TbOrder record);
+    int updateByPrimaryKeySelective(TbOrderDO record);
 
-    int updateByPrimaryKey(TbOrder record);
+    int updateByPrimaryKey(TbOrderDO record);
 }

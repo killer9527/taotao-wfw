@@ -1,17 +1,17 @@
 package com.wfw.mapper;
 
-import com.wfw.pojo.TbContentCategory;
+import com.wfw.entity.TbContentCategoryDO;
 
 public interface TbContentCategoryMapper {
     int deleteByPrimaryKey(Long id);
 
-    int insert(TbContentCategory record);
+    int insert(TbContentCategoryDO record);
 
-    int insertSelective(TbContentCategory record);
+    int insertSelective(TbContentCategoryDO record);
 
-    TbContentCategory selectByPrimaryKey(Long id);
+    TbContentCategoryDO selectByPrimaryKey(Long id);
 
-    int updateByPrimaryKeySelective(TbContentCategory record);
+    int updateByPrimaryKeySelective(TbContentCategoryDO record);
 
-    int updateByPrimaryKey(TbContentCategory record);
+    int updateByPrimaryKey(TbContentCategoryDO record);
 }

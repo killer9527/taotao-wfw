@@ -1,19 +1,19 @@
 package com.wfw.mapper;
 
-import com.wfw.pojo.TbContent;
+import com.wfw.entity.TbContentDO;
 
 public interface TbContentMapper {
     int deleteByPrimaryKey(Long id);
 
-    int insert(TbContent record);
+    int insert(TbContentDO record);
 
-    int insertSelective(TbContent record);
+    int insertSelective(TbContentDO record);
 
-    TbContent selectByPrimaryKey(Long id);
+    TbContentDO selectByPrimaryKey(Long id);
 
-    int updateByPrimaryKeySelective(TbContent record);
+    int updateByPrimaryKeySelective(TbContentDO record);
 
-    int updateByPrimaryKeyWithBLOBs(TbContent record);
+    int updateByPrimaryKeyWithBLOBs(TbContentDO record);
 
-    int updateByPrimaryKey(TbContent record);
+    int updateByPrimaryKey(TbContentDO record);
 }

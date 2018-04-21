@@ -1,17 +1,17 @@
 package com.wfw.mapper;
 
-import com.wfw.pojo.TbItem;
+import com.wfw.entity.TbItemDO;
 
 public interface TbItemMapper {
     int deleteByPrimaryKey(Long id);
 
-    int insert(TbItem record);
+    int insert(TbItemDO record);
 
-    int insertSelective(TbItem record);
+    int insertSelective(TbItemDO record);
 
-    TbItem selectByPrimaryKey(Long id);
+    TbItemDO selectByPrimaryKey(Long id);
 
-    int updateByPrimaryKeySelective(TbItem record);
+    int updateByPrimaryKeySelective(TbItemDO record);
 
-    int updateByPrimaryKey(TbItem record);
+    int updateByPrimaryKey(TbItemDO record);
 }
