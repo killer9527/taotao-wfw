@@ -160,4 +160,12 @@
       updated = #{updated,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+  <resultMap id="ItemDTOResultMap" type="com.wfw.manager.dto.TbItemDTO"></resultMap>
+  <select id="selectByItemId" resultMap="ItemDTOResultMap">
+    select id, title, sell_point, price, num, barcode, image, cid, status from tb_item
+    <where>
+      tb_item.id = #{itemId}
+    </where>
+  </select>
 </mapper>
