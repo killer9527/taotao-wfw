@@ -4,6 +4,8 @@ import com.wfw.manager.dto.TbItemDTO;
 import com.wfw.manager.entity.TbItemDO;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 public interface TbItemMapper {
     int deleteByPrimaryKey(Long id);
 
@@ -18,4 +20,6 @@ public interface TbItemMapper {
     int updateByPrimaryKey(TbItemDO record);
 
     TbItemDTO selectByItemId(@Param("itemId") long itemId);
+
+    List<TbItemDTO> selectAll();
 }

@@ -1,5 +1,7 @@
 package com.wfw.manager.dto;
 
+import java.util.Date;
+
 /**
  * Created by killer9527 on 2018/4/22.
  */
@@ -21,6 +23,10 @@ public class TbItemDTO {
     private Long cid;
 
     private Byte status;
+
+    private Date created;
+
+    private Date updated;
 
     public Long getId() {
         return id;
@@ -92,5 +98,21 @@ public class TbItemDTO {
 
     public void setStatus(Byte status) {
         this.status = status;
+    }
+
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
+    }
+
+    public Date getUpdated() {
+        return updated;
+    }
+
+    public void setUpdated(Date updated) {
+        this.updated = updated;
     }
 }
