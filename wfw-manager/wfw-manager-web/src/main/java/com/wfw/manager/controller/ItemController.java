@@ -1,5 +1,6 @@
 package com.wfw.manager.controller;
 
+import com.wfw.common.vo.EUDataGridPageVO;
 import com.wfw.manager.dto.TbItemDTO;
 import com.wfw.manager.service.ItemService;
 import com.wfw.manager.vo.TbItemVO;
@@ -16,7 +17,7 @@ public class ItemController {
     private ItemService itemService;
 
     @RequestMapping(value = "/getItemById/{itemId}", method = RequestMethod.GET)
-    public TbItemVO getItemById(@PathVariable("itemId") Long itemId){
+    public TbItemVO getItemById(@PathVariable("itemId") Long itemId) {
         TbItemDTO item = this.itemService.getItemById(itemId);
         TbItemVO tbItemVO = new TbItemVO();
         tbItemVO.setId(item.getId());
@@ -28,5 +29,10 @@ public class ItemController {
         tbItemVO.setNum(item.getNum());
         tbItemVO.setStatus(item.getStatus());
         return tbItemVO;
+    }
+
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    public EUDataGridPageVO<TbItemDTO> list(Integer page, Integer rows) {
+        return this.itemService.getItems(page, rows);
     }
 }

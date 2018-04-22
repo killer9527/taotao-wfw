@@ -15,7 +15,7 @@
     <result column="updated" jdbcType="TIMESTAMP" property="updated" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, title, sell_point as sellPoint, price, num, barcode, image, cid, status, created, updated
+    id, title, sell_point, price, num, barcode, image, cid, status, created, updated
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
@@ -164,7 +164,7 @@
   <resultMap id="ItemDTOResultMap" type="com.wfw.manager.dto.TbItemDTO"></resultMap>
   <select id="selectByItemId" resultMap="ItemDTOResultMap">
     select
-    <include refid="Base_Column_List"></include>
+    id, title, sell_point as sellPoint, price, num, barcode, image, cid, status, created, updated
     from tb_item
     <where>
       tb_item.id = #{itemId}
@@ -173,7 +173,7 @@
 
   <select id="selectAll" resultMap="ItemDTOResultMap">
     select
-    <include refid="Base_Column_List"></include>
+    id, title, sell_point as sellPoint, price, num, barcode, image, cid, status, created, updated
     from tb_item
   </select>
 </mapper>
