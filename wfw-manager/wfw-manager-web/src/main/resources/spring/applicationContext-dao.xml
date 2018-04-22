@@ -28,6 +28,6 @@
     </bean>
     <!--配置扫描包，加载mapper代理对象，即*mapper接口在*mapper.xml中的实现-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.wfw.mapper"></property>
+        <property name="basePackage" value="com.wfw.manager.mapper"></property>
     </bean>
 </beans>

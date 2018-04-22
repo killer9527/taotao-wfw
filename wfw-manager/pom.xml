@@ -4,10 +4,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <modules>
+        <module>wfw-manager-pojo</module>
         <module>wfw-manager-mapper</module>
         <module>wfw-manager-service</module>
         <module>wfw-manager-web</module>
-        <module>wfw-manager-entity</module>
     </modules>
 
     <parent>
