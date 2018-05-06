@@ -116,6 +116,7 @@
 				$.messager.alert('提示','新增商品成功!');
 			}
 		});
+
 	}
 	
 	function clearForm(){

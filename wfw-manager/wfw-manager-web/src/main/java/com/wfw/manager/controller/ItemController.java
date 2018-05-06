@@ -2,10 +2,15 @@ package com.wfw.manager.controller;
 
 import com.wfw.common.vo.EUDataGridPageVO;
 import com.wfw.manager.dto.TbItemDTO;
+import com.wfw.manager.entity.TbItemDO;
 import com.wfw.manager.service.ItemService;
+import com.wfw.manager.vo.SaveItemResponseVO;
 import com.wfw.manager.vo.TbItemVO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Created by killer9527 on 2018/4/22.
@@ -34,5 +39,19 @@ public class ItemController {
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public EUDataGridPageVO<TbItemDTO> list(Integer page, Integer rows) {
         return this.itemService.getItems(page, rows);
+    }
+
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public SaveItemResponseVO save(TbItemDO item, String desc) {
+        SaveItemResponseVO response;
+        try {
+            response = this.itemService.saveItem(item, desc);
+        } catch (Exception e) {
+            e.printStackTrace();
+            response = new SaveItemResponseVO();
+            response.setStatus(501);
+            response.setMsg("商品添加出现异常");
+        }
+        return response;
     }
 }

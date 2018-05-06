@@ -4,11 +4,17 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.wfw.common.vo.EUDataGridPageVO;
 import com.wfw.manager.dto.TbItemDTO;
+import com.wfw.manager.entity.TbItemDO;
+import com.wfw.manager.entity.TbItemDescDO;
+import com.wfw.manager.mapper.TbItemDescMapper;
 import com.wfw.manager.mapper.TbItemMapper;
 import com.wfw.manager.service.ItemService;
+import com.wfw.manager.vo.SaveItemResponseVO;
+import com.wfw.utils.UniqueIdUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -18,6 +24,9 @@ import java.util.List;
 public class ItemServiceImpl implements ItemService {
     @Autowired
     private TbItemMapper itemMapper;
+
+    @Autowired
+    private TbItemDescMapper itemDescMapper;
 
     @Override
     public TbItemDTO getItemById(long itemId) {
@@ -33,5 +42,43 @@ public class ItemServiceImpl implements ItemService {
         result.setRows(tbItems);
         result.setTotal(pageInfo.getTotal());
         return result;
+    }
+
+    @Override
+    public SaveItemResponseVO saveItem(TbItemDO tbItemDO, String desc) throws Exception {
+        //生成商品Id
+        long itemId = UniqueIdUtil.genItemId();
+        tbItemDO.setId(itemId);
+        //status置为正常
+        tbItemDO.setStatus((byte) 1);
+        tbItemDO.setCreated(new Date());
+        tbItemDO.setUpdated(new Date());
+
+        //插入商品描述
+        int itemDescResult = insertItemDesc(tbItemDO.getId(), desc);
+        int itemResult = this.itemMapper.insert(tbItemDO);
+        if (itemDescResult == 0) {
+            throw new Exception("商品描述添加失败");
+        }
+        if (itemResult == 0) {
+            throw new Exception("商品添加失败");
+        }
+        return new SaveItemResponseVO();
+    }
+
+    /**
+     * 添加商品描述
+     *
+     * @param itemId
+     * @param desc
+     * @return
+     */
+    private int insertItemDesc(long itemId, String desc) {
+        TbItemDescDO tbItemDesc = new TbItemDescDO();
+        tbItemDesc.setItemId(itemId);
+        tbItemDesc.setItemDesc(desc);
+        tbItemDesc.setCreated(new Date());
+        tbItemDesc.setUpdated(new Date());
+        return this.itemDescMapper.insert(tbItemDesc);
     }
 }
