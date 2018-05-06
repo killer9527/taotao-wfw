@@ -6,8 +6,10 @@ import com.wfw.common.vo.EUDataGridPageVO;
 import com.wfw.manager.dto.TbItemDTO;
 import com.wfw.manager.entity.TbItemDO;
 import com.wfw.manager.entity.TbItemDescDO;
+import com.wfw.manager.entity.TbItemParamItemDO;
 import com.wfw.manager.mapper.TbItemDescMapper;
 import com.wfw.manager.mapper.TbItemMapper;
+import com.wfw.manager.mapper.TbItemParamItemMapper;
 import com.wfw.manager.service.ItemService;
 import com.wfw.manager.vo.SaveItemResponseVO;
 import com.wfw.utils.UniqueIdUtil;
@@ -28,6 +30,9 @@ public class ItemServiceImpl implements ItemService {
     @Autowired
     private TbItemDescMapper itemDescMapper;
 
+    @Autowired
+    private TbItemParamItemMapper itemParamItemMapper;
+
     @Override
     public TbItemDTO getItemById(long itemId) {
         return this.itemMapper.selectByItemId(itemId);
@@ -45,7 +50,7 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public SaveItemResponseVO saveItem(TbItemDO tbItemDO, String desc) throws Exception {
+    public SaveItemResponseVO saveItem(TbItemDO tbItemDO, String desc, String itemParams) throws Exception {
         //生成商品Id
         long itemId = UniqueIdUtil.genItemId();
         tbItemDO.setId(itemId);
@@ -57,11 +62,23 @@ public class ItemServiceImpl implements ItemService {
         //插入商品描述
         int itemDescResult = insertItemDesc(tbItemDO.getId(), desc);
         int itemResult = this.itemMapper.insert(tbItemDO);
+
+        //插入商品规格参数
+        TbItemParamItemDO itemParamItem = new TbItemParamItemDO();
+        itemParamItem.setItemId(tbItemDO.getId());
+        itemParamItem.setParamData(itemParams);
+        itemParamItem.setCreated(new Date());
+        itemParamItem.setUpdated(new Date());
+        int itemParamItemResult = this.itemParamItemMapper.insert(itemParamItem);
+
         if (itemDescResult == 0) {
             throw new Exception("商品描述添加失败");
         }
         if (itemResult == 0) {
             throw new Exception("商品添加失败");
+        }
+        if (itemParamItemResult == 0){
+            throw new Exception("商品规格参数添加失败");
         }
         return new SaveItemResponseVO();
     }

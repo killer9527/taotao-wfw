@@ -29,5 +29,5 @@ public interface ItemService {
      * @param tbItemDO
      * @return
      */
-    SaveItemResponseVO saveItem(TbItemDO tbItemDO, String desc) throws Exception;
+    SaveItemResponseVO saveItem(TbItemDO tbItemDO, String desc, String itemParams) throws Exception;
 }

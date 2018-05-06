@@ -42,14 +42,14 @@ public class ItemController {
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public SaveItemResponseVO save(TbItemDO item, String desc) {
+    public SaveItemResponseVO save(TbItemDO item, String desc, String itemParams) {
         SaveItemResponseVO response;
         try {
-            response = this.itemService.saveItem(item, desc);
+            response = this.itemService.saveItem(item, desc, itemParams);
         } catch (Exception e) {
             e.printStackTrace();
             response = new SaveItemResponseVO();
-            response.setStatus(501);
+            response.setStatus(500);
             response.setMsg("商品添加出现异常");
         }
         return response;

@@ -1,5 +1,6 @@
 package com.wfw.manager.mapper;
 
+import com.wfw.manager.entity.TbItemParamDO;
 import com.wfw.manager.entity.TbItemParamItemDO;
 
 public interface TbItemParamItemMapper {

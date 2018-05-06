@@ -28,7 +28,8 @@
     delete from tb_item_param_item
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.wfw.manager.entity.TbItemParamItemDO">
+  <insert id="insert" parameterType="com.wfw.manager.entity.TbItemParamItemDO"
+          keyColumn="id" keyProperty="id" useGeneratedKeys="true">
     insert into tb_item_param_item (id, item_id, created, 
       updated, param_data)
     values (#{id,jdbcType=BIGINT}, #{itemId,jdbcType=BIGINT}, #{created,jdbcType=TIMESTAMP}, 

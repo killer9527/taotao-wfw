@@ -16,4 +16,6 @@ public interface TbItemParamMapper {
     int updateByPrimaryKeyWithBLOBs(TbItemParamDO record);
 
     int updateByPrimaryKey(TbItemParamDO record);
+
+    TbItemParamDO selectByCategoryId(Long id);
 }
