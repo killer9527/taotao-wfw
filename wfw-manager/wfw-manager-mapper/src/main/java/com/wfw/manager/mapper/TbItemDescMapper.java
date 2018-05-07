@@ -1,8 +1,9 @@
 package com.wfw.manager.mapper;
 
-import com.sun.tools.javac.util.List;
 import com.wfw.manager.dto.TbItemDTO;
 import com.wfw.manager.entity.TbItemDescDO;
+
+import java.util.List;
 
 public interface TbItemDescMapper {
     int deleteByPrimaryKey(Long itemId);
